@@ -9,3 +9,5 @@ pdf
 tmp
 *.tar.gz
 php.ini
+fabfile.py
+*.sql
