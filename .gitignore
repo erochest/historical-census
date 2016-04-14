@@ -1,0 +1,10 @@
+awstats2
+*.PSD
+*.bak
+*.bak2
+*.backup
+mapservr
+mapsrvr
+pdf
+tmp
+*.tar.gz
