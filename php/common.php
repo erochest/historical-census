@@ -1,4 +1,4 @@
-<?
+<?php
 /* Database connection information.  Called by each script that needs to connect to the database. */
 $hostName="***REMOVED***";
 $userName="***REMOVED***";
@@ -17,4 +17,3 @@ if (gettype($vars) == 'string') {
   $vars = array($vars);
 }
 
-?>

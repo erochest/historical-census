@@ -1,4 +1,4 @@
-<?
+<?php
 require ("common.php");
 
 //$dels = "";
@@ -303,4 +303,3 @@ print "</table></div></form>";
 
 }
 mysql_close();
-?>

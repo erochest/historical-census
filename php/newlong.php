@@ -1,4 +1,4 @@
-<?
+<?php
 require ("common.php");
 
 $subject = mysqli_real_escape_string($subject);

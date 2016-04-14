@@ -1,4 +1,4 @@
-<?
+<?php
 require ("common.php");
 $allstates = "";
 $dels = array();
@@ -452,4 +452,3 @@ print "</table></div></form>";
 
 }
 mysql_close();
-?>

@@ -1,4 +1,4 @@
-<? 
+<?php
 require ("common.php");
 
 ## prints out the web template
@@ -88,5 +88,4 @@ print "</select></p>\n<p>
 
 mysql_close();
 }
-?>
 

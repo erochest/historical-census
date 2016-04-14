@@ -1,4 +1,4 @@
-<?
+<?php
 require ("common.php");
 
 ## prints out the web template
