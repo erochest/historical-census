@@ -1,0 +1,436 @@
+/* CSS Document */
+
+body {
+ margin: 0px;
+ color: black;
+ background: #FFFFF0;
+ font-family: Arial, Helvetica, Verdana, sans-serif;
+ }
+
+a:link {
+  color: #600;
+   }
+   
+a:hover {
+  color: #900;
+  }
+  
+a:visited {
+  color: #600;
+  }
+ 
+
+ 
+table#wrapper {
+        border: 1px solid #333333;
+        border-top: 0px;
+}
+
+/*div#content {
+        padding: 0px 5% 60px 5%;
+        margin: 0;
+} */
+
+.ahem {
+        display: none;
+        }
+        
+
+#blurb {
+        padding: 0px 24px 0px 24px;
+        text-indent: -12px;
+}
+
+.leader {
+        font-size: 160%;
+        color: #963;
+        font-weight: bold;
+        margin: 0px;
+}
+
+table#announcement {
+        width: 120px;
+        font-size: 90%;
+        margin: 12px;
+        border-top: 2px solid #333;
+        border-bottom: 2px solid #333;
+        padding: 3px 0px;
+}
+
+.headline {
+        font-weight: bold;
+        color: #600;
+}
+
+h1, h2, h3, h4 {
+   color: #963;
+   font-family: Arial, Helvetica, Verdana, sans-serif; 
+  }
+  
+h1 {
+   font: bold 160%;
+   }
+   
+h2 {
+   font: bold 130%;
+   }
+   
+h3 {
+   font: bold 115%;
+   }
+   
+h4 {
+   font-weight: bold;
+   }
+
+div#quicklinks {
+        margin: 8px 0px 0px 32px;
+        }
+        
+#geo-feature p, #stat-feature p {
+        padding: 8px;
+        border: 1px solid #333;
+        margin-top: 0px;
+        background-color: #FFFFF0;
+}
+
+#geo-feature h2, #stat-feature h2  {
+        margin: 18px 0px -7px 0px;
+        position: relative;
+        z-index: 2;
+        left: -2px; 
+        font-size: 160%;
+        color: #963;
+        font-weight: bold;
+}
+
+#geo-feature, #stat-feature {
+        margin-left: 32px;
+}
+
+table#virgobox {
+  border-left: 1px solid #333; 
+}
+
+td#dbbtn {
+  border-top: 1px solid #333; 
+}
+
+table#sidebar td  {
+  font-size: 90%;
+  border-bottom: 1px solid #333; 
+  border-left: 1px solid #333; 
+  }
+   
+table#sidebar td a {
+  text-decoration: none;
+  color: #333;
+  }
+  
+table#sidebar td a:hover {
+  text-decoration: underline;
+  }
+
+table#callout {
+        border: 0px;
+        float: right;
+        border-top: 1px solid #333;
+        margin: 0px 0px 16px 16px;
+        width: 160px;
+        }
+
+
+table#callout td {
+        font-size: 90%;
+        background: #FFF5D7;
+        border-right: 1px solid #333;
+        border-bottom: 1px solid #333;
+        border-left: 1px solid #333;
+        padding: 2px;
+        }
+        
+table#callout td a {
+  text-decoration: none;
+  color: #333;
+  }
+        
+table#callout td a:hover {
+  text-decoration: underline;
+  }
+
+p.toplink a {
+ font-weight: bold;
+ font-size: 12px;
+ padding: 3px;
+ margin: 4px 18px 32px 0px;
+ border: 1px solid #960;
+ background-color: #FFFFF0;
+ }
+ 
+table.buttons td {
+  border: 1px solid #960;
+  background-color: #FFFFF0;
+ }
+ 
+table.buttons td a {
+ font-weight: bold;
+ font-size: 14px;
+ }
+
+ p.menubuttons a {
+ font-weight: bold;
+ font-size: 14px;
+ padding: 4px;
+ margin: 4px;
+ border: 1px solid #960;
+ background-color: #FFFFF0;
+ }
+ 
+ p.menubuttons a:hover {
+ font-weight: bold;
+ font-size: 14px;
+ padding: 4px;
+ margin: 4px;
+ border: 1px solid #600;
+ background-color: #FFF5D7;
+ }
+
+
+table#footer td {
+  font-size: 90%;
+  border-top: 1px solid #333333;
+  }
+ 
+table#footer td#copyright {
+  border-top: 0px;
+  font-size: 80%;
+  }
+
+ th {
+ font-weight: bold;
+ font-family: Arial, Helvetica, sans-serif;
+ color: #700000;
+ text-align: left;
+ background: #FFE0A1;
+ }
+
+ div#content table td p {
+        margin-left: 0em;
+        }
+ 
+.th1 {
+ font-weight: bold;
+ font-family: Arial, Helvetica, sans-serif;
+ color: #700000;
+ background: #FFE0A1;
+
+ }
+
+
+.verysmall {
+ font-weight: normal;
+ font-size: 75%;
+ font-family: Arial, Helvetica, sans-serif 
+ }
+ 
+.small { 
+ font-weight: normal;
+ font-size: 90%; 
+ font-family: Arial, Helvetica, sans-serif
+ }
+ 
+.arial10px {
+        font-size: 10px;
+ }
+ 
+div#content p {
+ margin-right: 0em;
+ margin-left: 5em;
+ }
+
+div#content h2 {
+ margin-top: 2em;
+ margin-left: 2em;
+ }
+
+div#content h3 {
+ margin-top: 2em;
+ margin-left: 3em;
+ }
+
+div#content h4 {
+ margin-top: 2em;
+ margin-left: 4em;
+ }
+
+/* div#content table {
+        margin-left: 5em;
+ } */
+
+.h3-inline {
+ font-family: Arial, Helvetica, Verdana, sans-serif;
+ color: #963;
+ font-size: 115%;
+ font-weight: bold;
+ margin-top: 2em;
+ }
+
+.h4-inline {
+ font-family: Arial, Helvetica, Verdana, sans-serif;
+ color: #963;
+ font-weight: bold;
+ margin-top: 2em;
+ }
+
+
+div#content ol {
+ font-family: Arial, Helvetica, sans-serif ;
+ margin-top: 0.5em;
+ margin-right: 0em;
+ margin-bottom: 0.5em;
+ margin-left: 7em;
+ }
+
+div#content ul {
+ font-family: Arial, Helvetica, sans-serif ;
+ margin-right: 0em;
+ margin-left: 7em;
+ }
+ 
+div#content dl {
+ font-family: Arial, Helvetica, sans-serif ;
+ margin-top: 0.5em;
+ margin-right: 0em;
+ margin-bottom: 0.5em;
+ margin-left: 7em;
+ }
+ 
+div#content li {
+ margin-top: 0.25em;
+ margin-bottom: 0.5em;
+ }
+ 
+div#content blockquote {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 90%;
+ margin-left: 7em;
+ }
+
+iframe p, layer p{
+ font-family: Arial, Helvetica, sans-serif ;
+ }
+
+p.category {
+ padding: 4px;
+ width: 200px;
+ margin: 0px;
+ background-color: #FFFFEA;
+ border: 1px solid #960;
+}
+
+p.category a {
+ font-weight: bold;
+ text-decoration: none;
+ color: #700000;
+ }
+
+p.category a:hover {
+ text-decoration: underline;
+ color: #990000;
+        }
+
+td#descrips {
+ border: 2px solid #FFE0A1;
+ }
+
+.nested ul {
+ position: relative;
+ font-family: Arial, Helvetica, sans-serif ;
+ margin-top: 0em;
+ margin-right: 0em;
+ margin-bottom: 0.5em;
+ margin-left: 2em;
+ } 
+
+.indent2em {
+        margin-left: 2em;
+        }
+
+.indent5em {
+        margin-left: 5em;
+        }
+
+.extra_leading {
+        line-height: 1.3em;
+        }
+
+.hanging {
+ text-indent: -2em;
+ margin-left: 3em}
+
+/* .menu {
+ margin-top: 0em;
+ margin-right: 1em;
+ margin-bottom: 0em;
+ margin-left: 1em;
+ }
+ */
+.menu p {
+ color: #700000;
+ font-family: Arial, Helvetica, sans-serif;
+ font-weight: bold;
+ padding: 4px;
+ background: #FFE0A1;
+ border: 1px solid #960;
+ margin: 0;
+ }
+
+.menu a {
+ font-family: Arial, Helvetica, sans-serif;
+ font-weight: bold;
+ color: #700000;
+ text-decoration: none;
+ }
+
+.menu a:hover {
+ font-family: Arial, Helvetica, sans-serif;
+ font-weight: bold;
+ color: #660000;
+ text-decoration: underline;
+ }
+
+.menu a:visited {
+ font-family: Arial, Helvetica, sans-serif;
+ font-weight: bold;
+ color: #333333;
+ }
+
+.submenu {
+ font-family: Arial, Helvetica, sans-serif;
+ }
+
+.submenu p {
+ font-family: Arial, Helvetica, sans-serif;
+ font-weight: normal;
+ font-size: 90%;
+ padding: 4px;
+ background: #FFFFF0;
+ border-top: 0px;
+ border-right: 1px solid #960;
+ border-bottom: 1px solid #960;
+ border-left: 1px solid #960;
+ margin: 0;
+ }
+
+.submenu a {
+ color: #700000;
+ font-family: Arial, Helvetica, sans-serif;
+ text-decoration: none;
+ }
+
+.submenu a:hover {
+ color: #660000;
+ font-family: Arial, Helvetica, sans-serif;
+ text-decoration: underline;
+ }
+
