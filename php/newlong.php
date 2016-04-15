@@ -1,44 +1,40 @@
 <?php
 require ("common.php");
 
-$subject = mysqli_real_escape_string($subject);
 ## prints out the web template
-print_template($subject);
+print_template($link, $subject);
 
-function print_template ($subject) {
-        $handle=fopen ("script_template.html","rb");
-        $contents="";
-        do {
-                $data=fread($handle, 1024);
-                if (strlen($data) == 0) {
-                        break;
-                }
-                $contents .=$data;
-        } while (true);
-        fclose($handle);
-        $contents=str_replace("<!-- title here -->", "Historical Census Browser", $contents);
-        $pos = strpos($contents, "<!--  content here -->");
-        //We don't need any stinking regular expressions!!!!!
-        print substr($contents,0,$pos);
-        printbody($subject);
-        print substr($contents,$pos+strlen("<!-- content here -->")+1);
+function print_template ($link, $subject) {
+    $handle   = fopen ("script_template.html","rb");
+    $contents = "";
+    do {
+        $data = fread($handle, 1024);
+        if (strlen($data) === 0) {
+            break;
+        }
+        $contents .= $data;
+    } while (true);
+    fclose($handle);
+    $contents = str_replace(
+        "<!-- title here -->", "Historical Census Browser", $contents
+    );
+    $pos      = strpos($contents, "<!--  content here -->");
+    //We don't need any stinking regular expressions!!!!!
+    print substr($contents,0,$pos);
+    printbody($link, $subject);
+    print substr($contents,$pos+strlen("<!-- content here -->")+1);
 }
 
 ## main body of the script--you must pass the same vars to both print_template and printbody
-function printbody($subject){
-if ($subject=="") { $subject=1; }
+function printbody($link, $subject) {
+    if (empty($subject)) {
+        $subject = 1;
+    }
 
-print "<h2>Census Data Over Time</h2>\n";
-print "<form action=\"newlong2.php\" method=\"POST\">\n";
+    print "<h2>Census Data Over Time</h2>\n";
+    print "<form action=\"newlong2.php\" method=\"POST\">\n";
 
-$query2="Select * from Groups where groupid=$subject";  
-$result2=mysql_query($query2);
-$number2=mysql_numrows($result2);
-for ($i=0; $i<$number2; $i++) {
-        $grpid=mysql_result($result2, $i, "groupid");
-        $groupname=mysql_result($result2, $i, "groupname");
-        $grp[$grpid]=$groupname;
-}
+    $grp = get_groups($link, $subject);
 ?>
 <p><strong>Display data from: </strong><br /><select name="begin">
 <option value="1790" selected>1790</option>
@@ -81,21 +77,24 @@ for ($i=0; $i<$number2; $i++) {
 <option value="1950">1950</option>
 <option value="1960" selected>1960</option>
 </select>
-<?
+<?php
 
-print "<p><strong>Select from the topics below in the category of $grp[$subject]:</strong></p>\n"; 
-print "<p><select name=\"varname\" size=\"5\">\n";
+    print "<p><strong>Select from the topics below in the category "
+        . "of ${grp[$subject]}:</strong></p>\n"; 
+    print "<p><select name=\"varname\" size=\"5\">\n";
 
-##$query="Select varname, groupid, first, last from Vars order by groupid, varname";
-$query="Select varname, first, last from Vars where groupid=$subject order by varname";
-$result=mysql_query($query);   
-$number=mysql_numrows($result);
-for ($i=0; $i<$number; $i++) {
-        $groupid=mysql_result($result, $i, "groupid");
-        $varname=mysql_result($result, $i, "varname");
-        $start=mysql_result($result, $i, "first");
-        $finish=mysql_result($result, $i, "last");
-	/*
+    ##$query="Select varname, groupid, first, last from Vars order by groupid, varname";
+    $query  = "Select varname, first, last from Vars "
+        . "where groupid="
+        . mysqli_real_escape_string($link, $subject)
+        . " order by varname";
+    $rows = query_fetch_all($link, $query);
+    foreach ($rows as $row) {
+        $groupid = $row["groupid"];
+        $varname = $row["varname"];
+        $start   = $row["first"];
+        $finish  = $row["last"];
+    /*
         if ($test==$groupid) { }
         else {
                 if ($first==0) { $first++; }
@@ -103,27 +102,32 @@ for ($i=0; $i<$number; $i++) {
                 print "<option value=\"\">============================$grp[$groupid]============================</option>";    
                 $test=$groupid;
         }
-	*/
+     */
         print "<option value=\"$varname:$start:$finish\">$varname ($start--$finish)</option>\n";
+    }
+    print "</select></p>\n";
+
+    print "<p><input type=\"submit\"> &nbsp <input type=\"reset\"></form></p>\n";
+
+    print "<form action=\"newlong.php\" method=\"POST\">\n";
+    print "<p><strong>Change category listing</strong>:<br /><select name=\"subject\">\n";
+
+    $query4  = "SELECT DISTINCT Vars.groupid, Groups.groupname "
+        . "FROM Vars, Groups "
+        . "where Vars.groupid = Groups.groupid";
+    $rows = query_fetch_all($link, $query4);
+    foreach ($rows as $row) {
+        $id   = $row["groupid"];
+        $name = $row["groupname"];
+        if ($id == $subject) {
+            $selected = " selected";
+        } else {
+            $selected = "";
+        }
+        print "<option value=\"$id\" $selected>$name</option>\n";
+    }
+    print "</select></p>\n";
+    print "<p><input type=\"submit\"> &nbsp <input type=\"reset\"></form></p>\n";
 }
-print "</select></p>\n";
-
-
-print "<p><input type=\"submit\"> &nbsp <input type=\"reset\"></form></p>\n";
-
-print "<form action=\"newlong.php\" method=\"POST\">\n";
-print "<p><strong>Change category listing</strong>:<br /><select name=\"subject\">\n";
-
-$query4="SELECT DISTINCT Vars.groupid, Groups.groupname FROM Vars, Groups where Vars.groupid=Groups.groupid";
-$result4=mysql_query($query4);
-$number4=mysql_numrows($result4); 
-for ($i=0; $i<$number4; $i++) {
-        $id=mysql_result($result4, $i, "Vars.groupid");
-        $name=mysql_result($result4, $i, "Groups.groupname");
-	print "<option value=\"$id\">$name</option>\n";
-}
-print "</select></p>\n";
-print "<p><input type=\"submit\"> &nbsp <input type=\"reset\"></form></p>\n";
-}
-mysql_close();
+mysqli_close($link);
 

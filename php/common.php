@@ -18,8 +18,14 @@ function query_fetch_one($link, $query) {
     return $result->fetch_assoc();
 }
 
-function get_groups($link) {
+function get_groups($link, $groupid=null) {
     $query = "Select * from Groups";
+    if (!is_null($groupid)) {
+        $query .= " where groupid='"
+            . mysqli_real_escape_string($link, $groupid)
+            . "'";
+    }
+
     $data  = query_fetch_all($link, $query);
     $grp   = array();
 
@@ -65,24 +71,40 @@ function validate_array($value, $re, $name) {
     return $value;
 }
 
-$input_vars = $_GET + $_POST;
-$denominator = array_get('denominator', $input_vars);
-$direction   = array_get('direction',   $input_vars);
-$numerator   = array_get('numerator',   $input_vars);
-$sort        = array_get('sort',        $input_vars);
-$stateid     = array_get('stateid',     $input_vars);
-$subject     = array_get('subject',     $_GET);
-$table       = array_get('table',       $input_vars);
-$vars        = array_get('vars',        $input_vars);
-$year        = array_get('year',        $input_vars);
+$input_vars  = $_GET + $_POST;
+$allstates   = array_get('allstates'   , $input_vars);
+$begin       = array_get('begin'       , $input_vars);
+$denominator = array_get('denominator' , $input_vars);
+$direction   = array_get('direction'   , $input_vars);
+$end         = array_get('end'         , $input_vars);
+$numerator   = array_get('numerator'   , $input_vars);
+$sort        = array_get('sort'        , $input_vars);
+$stateid     = array_get('stateid'     , $input_vars);
+$stateids    = array_get('stateids'    , $input_vars);
+$subject     = array_get('subject'     , $input_vars);
+$table       = array_get('table'       , $input_vars);
+$valid       = array_get('valid'       , $input_vars);
+$varname     = array_get('varname'     , $input_vars);
+$var         = array_get('var'         , $input_vars);
+$vars        = array_get('vars'        , $input_vars);
+$year        = array_get('year'        , $input_vars);
 
-$var_valid   = '/^var\d+$/';
-$numerator   = validate_array($numerator   , $var_valid , 'numerator');
-$stateid     = validate_array($stateid     , '/^\d+$/'  , 'stateid');
-$vars        = validate_array($vars        , $var_valid , 'var');
-validate_regex($denominator , $var_valid      , 'denominator');
-validate_regex($direction   , '/ASC|DESC/'    , 'direction');
-validate_regex($sort        , '/^\w+$/'       , 'sort');
-validate_regex($table       , '/^\d\d\d\d$/'  , 'table');
-validate_regex($year        , '/^V\d\d\d\d$/' , 'year' );
+$var_valid = '/^var\d+$/';
+$num_valid = '/^\d+$/';
+$numerator = validate_array($numerator   , $var_valid , 'numerator' );
+$stateid   = validate_array($stateid     , '/^\d+$/'  , 'stateid'   );
+$stateids  = validate_array($stateids    , '/^\d+$/'  , 'stateids'  );
+$valid     = validate_array($valid       , $num_valid , 'valid'     );
+$vars      = validate_array($vars        , $var_valid , 'var'       );
+validate_regex($allstates   , '/^ALL$/'           , 'allstates'     );
+validate_regex($begin       , $num_valid          , 'begin'         );
+validate_regex($denominator , $var_valid          , 'denominator'   );
+validate_regex($direction   , '/ASC|DESC/'        , 'direction'     );
+validate_regex($end         , $num_valid          , 'end'           );
+validate_regex($sort        , '/^\w+$/'           , 'sort'          );
+validate_regex($subject     , $num_valid          , 'subject'       );
+validate_regex($table       , '/^\d\d\d\d$/'      , 'table'         );
+validate_regex($var         , '/^[\w ]*$/'        , 'var'           );
+validate_regex($varname     , '/^[^:]+:\d+:\d+$/' , 'varname'       );
+validate_regex($year        , '/^V\d\d\d\d$/'     , 'year'          );
 
