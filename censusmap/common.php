@@ -106,7 +106,7 @@ validate_regex($denominator , $var_valid          , 'denominator'   );
 validate_regex($direction   , '/ASC|DESC/'        , 'direction'     );
 validate_regex($end         , $num_valid          , 'end'           );
 validate_regex($geolevel    , '/^\w+$/'           , 'geolevel'      );
-validate_regex($label       , '/^[\w /()%]*$/'    , 'label'         );
+validate_regex($label       , '/^[\w \\/()%]*$/'  , 'label'         );
 validate_regex($long        , '/^[\w ]*$/'        , 'long'          );
 validate_regex($sort        , '/^\w*$/'           , 'sort'          );
 validate_regex($statename   , '/^[\w ]*$/'        , 'statename'     );
